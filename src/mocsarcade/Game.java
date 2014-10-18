@@ -37,11 +37,10 @@ public class Game extends BasicGame
 			AppGameContainer container = new AppGameContainer(new Game());
 			container.setDisplayMode(Game.WIDTH, Game.HEIGHT, false);
 			container.setUpdateOnlyWhenVisible(true);
+			container.setIcon("/res/coin.icon.png");
 			container.setShowFPS(false);
 			
-			container.setIcon("/res/coin.icon.png");
-			
-			if(args.length > 0 && args[0] == "development")
+			if(args.length > 0 && args[0].equals("deployment"))
 			{
 				container.setTargetFrameRate(60);
 				container.setFullscreen(true);
