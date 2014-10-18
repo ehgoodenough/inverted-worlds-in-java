@@ -30,19 +30,29 @@ public class Game extends BasicGame
 		//code goes here
 	}
 	
-	public static void main(String[] args) throws SlickException
+	public static void main(String[] args)
 	{
-		AppGameContainer container = new AppGameContainer(new Game());
-		container.setDisplayMode(Game.WIDTH, Game.HEIGHT, false);
-		
-		if(args.length > 0 && args[0] == "development")
+		try
 		{
-			container.setTargetFrameRate(60);
-			container.setFullscreen(true);
+			AppGameContainer container = new AppGameContainer(new Game());
+			container.setDisplayMode(Game.WIDTH, Game.HEIGHT, false);
+			container.setUpdateOnlyWhenVisible(true);
+			container.setShowFPS(false);
+			
+			container.setIcon("/res/coin.icon.png");
+			
+			if(args.length > 0 && args[0] == "development")
+			{
+				container.setTargetFrameRate(60);
+				container.setFullscreen(true);
+			}
+			
+			container.start();
 		}
-		
-		container.setShowFPS(false);
-		container.start();
+		catch(SlickException exception)
+		{
+			exception.printStackTrace();
+		}
 	}
 	
 	public static final int WIDTH = 800;
